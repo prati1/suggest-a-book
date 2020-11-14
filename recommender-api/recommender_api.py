@@ -1,5 +1,6 @@
 import flask
-from flask import request
+from flask import request, jsonify
+from flask_cors import CORS, cross_origin
 import json
 
 app = flask.Flask(__name__)
@@ -11,6 +12,7 @@ def home():
 
 # A route to return all of the available entries in our catalog.
 @app.route('/api/recommend/books', methods=['GET'])
+@cross_origin()
 def api_recommend_ids():
 	if 'id' in request.args:
 		id = int(request.args['id'])
@@ -25,5 +27,5 @@ def api_recommend_ids():
 	# bookTitle = bookTitles[bookId]
 
 	# get book titles based on id from frontend
-	return json.dumps({'bookIds': similarIds})
+	return jsonify({'bookIds': similarIds})
 app.run()
