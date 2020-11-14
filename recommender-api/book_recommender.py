@@ -42,8 +42,9 @@ class recommenderCollaborativeFiltering():
 		neighbour = kNN.kneighbors(bookVector, return_distance=show_distance)
 		for i in range(0,n):
 			bookIndex = neighbour.item(i)
+			
+			# convert nparray to list to pass it to frontend
 			bookId = (bMapInv[bookIndex]).tolist()
-			print(type(bookId))
 			neighbourIds.append(bookId)
 		neighbourIds.pop(0)
 		return neighbourIds
