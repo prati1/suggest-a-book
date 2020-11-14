@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, withRouter } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import books from "../resources/books.json";
 import {
   Container,
@@ -21,7 +21,21 @@ const HomePage = () => {
     Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
       arr.slice(i * size, i * size + size)
     );
+  const onClickNext = (e) => {
+    e.preventDefault();
+    let nextPage = page + 1;
+    if (nextPage < bookChunks.length) {
+      setPage(page + 1);
+    }
+  };
 
+  const onClickPrev = (e) => {
+    e.preventDefault();
+    let prevPage = page - 1;
+    if (prevPage > 0) {
+      setPage(prevPage);
+    }
+  };
   useEffect(() => {
     const chunks = chunk(books, 15);
     setBookChunks(chunks);
@@ -41,6 +55,14 @@ const HomePage = () => {
           </Row>
         </CardDeck>
       </div>
+      <Row className="prev-next-buttons">
+        <Link className="previous" to="#" onClick={onClickPrev}>
+          &#8249; Previous
+        </Link>
+        <Link className="next" to="#" onClick={onClickNext}>
+          Next &#8250;
+        </Link>
+      </Row>
     </Container>
   );
 };

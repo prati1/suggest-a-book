@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+.prev-next-buttons {
+  margin: 50px;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #6c757d;
+  color: white;
+}
