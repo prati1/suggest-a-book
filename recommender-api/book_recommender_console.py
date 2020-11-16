@@ -1,13 +1,15 @@
 from collaborative_filtering_recommender import collaborativeFilteringModel
+from book_recommender import recommenderCollaborativeFiltering
 
 collaborativeFiltering = collaborativeFilteringModel()
-
 bookTitles = collaborativeFiltering.getBookTitles()
 
-bookId = 23
+# A bookId used to suggest similar books
+bookId = 12
 
-matrix = collaborativeFiltering.loadSparseMatrix()
-similarIds = collaborativeFiltering.findSimilarBooks(bookId, matrix, n=15)
+recommender = recommenderCollaborativeFiltering()
+matrix = recommender.loadSparseMatrix()
+similarIds = recommender.findSimilarBooks(bookId, matrix, n=15)
 bookTitle = bookTitles[bookId]
 
 # get book titles based on id from frontend

@@ -10,7 +10,7 @@ app.config["DEBUG"] = True
 def home():
 	return "<h1>Book recommendation</h1></p>"
 
-# A route to return all of the available entries in our catalog.
+# A route to recommend books based on the users who liked a certain book
 @app.route('/api/recommend/books', methods=['GET'])
 @cross_origin()
 def api_recommend_ids():
